@@ -1,0 +1,96 @@
+<div class="em-l-container">
+    <div class="em-c-page-header ">
+       <h1 class="em-c-hero__title--bold" style="color: #890c58; font-weight: bold;"><br>Learn what you want, at your own pace!</h1>
+        <p class="em-c-page-header__desc">You’ve got this! Start learning to reach your goal. Expand your skills through flexible course offerings — from virtual instructor-led courses to online self-paced courses.</p>
+    </div>
+    <div class="em-l-grid em-l-grid--4up ">
+        <div class="em-l-grid__item">
+            <div class="em-c-page-header ">
+                <h3 class="em-c-page-header__title">Automation </h3>
+            </div>
+            <div style="padding-top: 20px; min-height: 150px;" ng-repeat="item in automation">
+                <a href="{{ item.Link }}" target="_blank">
+                    <div class="em-c-solid-card "
+                        style="border-radius: 15px; background:white; box-shadow: 1px 1px 5px #888888; margin-right: 50px;">
+                        <div class="em-c-solid-card__body" style="background:white;border-radius: 15px; min-height: 100px; margin-top:20px">
+                            <img src="event_thumbnail/{{ item.Icon }}" height="100px">
+                            <!-- <svg class="em-c-icon em-c-icon--large em-c-solid-card__icon">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    xlink:href="unity-1.5.0/images/48/em-icons.svg#user-1"></use>
+                            </svg> -->
+                            <h3 class="em-c-solid-card__title" style="color: black;">
+                                {{ item.Title }}
+                            </h3>
+                            <p class="em-c-media-block__desc" style="color: black; max-height: 300px;">{{ item.Description }}</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="em-l-grid__item">
+            <div class="em-c-page-header ">
+                <h3 class="em-c-page-header__title">Analytics </h3>
+            </div>
+            <div style="padding-top: 20px; min-height: 150px;" ng-repeat="item_analytics in analytics">
+                <a href="{{ item_analytics.Link }}" target="_blank">
+                    <div class="em-c-solid-card "
+                        style="border-radius: 15px; background:white; box-shadow: 1px 1px 5px #888888; margin-right: 50px;">
+                        <div class="em-c-solid-card__body" style="background:white;border-radius: 15px; min-height: 100px;">
+                            <img src="event_thumbnail/{{ item_analytics.Icon }}"  height="100px">
+                            <h3 class="em-c-solid-card__title" style="color: black;">
+                                {{ item_analytics.Title }}
+                            </h3>
+                            <p class="em-c-media-block__desc" style="color: black;">{{ item_analytics.Description }}</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+        <div class="em-l-grid__item">
+            <div class="em-c-page-header ">
+                <h3 class="em-c-page-header__title">Cloud Computing</h3>
+            </div>
+            <div style="padding-top: 20px; min-height: 150px;" ng-repeat="item in cloud">
+                <a href="{{ item.Link }}" target="_blank">
+                    <div class="em-c-solid-card "
+                        style="border-radius: 15px; background:white; box-shadow: 1px 1px 5px #888888; margin-right: 50px;">
+                        <div class="em-c-solid-card__body" style="background:white;border-radius: 15px; min-height: 100px;">
+                            <img src="event_thumbnail/{{ item.Icon }}"  height="100px">
+                            <h3 class="em-c-solid-card__title" style="color: black;">
+                                {{ item.Title }}
+                            </h3>
+                            <p class="em-c-media-block__desc" style="color: black;">{{ item.Description }}</p>
+                        </div>
+
+                    </div>
+                </a>
+
+
+            </div>
+        </div>
+        <div class="em-l-grid__item">
+            <div class="em-c-page-header ">
+                <h3 class="em-c-page-header__title">Others</h3>
+            </div>
+            <div style="padding-top: 20px; min-height: 150px;" ng-repeat="item in others">
+                <a href="{{ item.Link }}" target="_blank">
+                    <div class="em-c-solid-card "
+                        style="border-radius: 15px; background:white; box-shadow: 1px 1px 5px #888888; margin-right: 50px;">
+                        <div class="em-c-solid-card__body" style="background:white;border-radius: 15px; min-height: 100px;">
+                            <img src="event_thumbnail/{{ item.Icon }}" height="100px">
+                            <h3 class="em-c-solid-card__title" style="color: black;">
+                                {{ item.Title }}
+                            </h3>
+                            <p class="em-c-media-block__desc" style="color: black;">{{ item.Description }}</p>
+                        </div>
+                    </div>
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+</div>

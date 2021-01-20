@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11">
+    <!-- The above 3 meta tags *must* come first in the head -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js" crossorigin="anonymous"></script>
+    <script src="//ishareteam3.na.xom.com///code.angularjs.org/1.6.9/angular-route.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js" integrity="sha256-pMnh0ZUcC06qaENqfwxWLsWK/AkhiMlIVqdlPXA7BsU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.25/angular-ui-router.min.js" integrity="sha256-PMXh7fGR83hrns0BuGCsQXlo+2FD9R0EBRMYsRcv7FE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.26/stateEvents.min.js"></script>
+    <script src="unity-1.5.0/js/app.js"></script>
+    <script src="unity-1.5.0/js/scripts.js"></script>
+
+
+    <link href="unity-1.5.0/css/em-unity-1.5.0.min.css" media="all" rel="stylesheet" />
+    <script type="text/javascript" src="unity-1.5.0/js/vendor/svg4everybody.min.js"></script>
+    <script type="text/javascript" src="unity-1.5.0/js/vendor/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="unity-1.5.0/js/vendor/jquery.SPServices-2014.02.min.js"></script>
+    <script type="text/javascript" src="getVisits.js"></script>
+    <!-- <link href="unity-1.5.0/images/ITLogo.ico" rel="shortcut icon" /> -->
+    <link rel="icon" type="image/png" href="unity-1.5.0/images/emit_logo.png" />
+    <title>KLGBC Upskilling</title>
+</head>
+
+<body ng-app="ktdc" class="em-theme--blue">
+    <header class="em-c-header em-c-header--large" role="banner" style="background: #0F0E1F; margin-bottom: 0px;">
+        <div class="em-l-container em-c-header__inner">
+            <div class="em-c-header__body">
+                <div class="em-c-header__title-container">
+                    <h5>
+                        <!--a href="#" rel="home" class="em-c-header__title-link"-->KLGBC Talent Development</a>
+                    </h5>
+                </div>
+                <div class="em-c-header__nav-container em-js-nav-panel">
+                    <nav id="nav" class="em-c-primary-nav" role="navigation">
+                        <ul class="em-c-primary-nav__list">
+                            <li class="em-c-primary-nav__item ">
+                                <a href="#!/" class="em-c-primary-nav__link em-is-current " target="_self">
+									Home
+								</a>
+                            </li>
+
+                            <li class="em-c-primary-nav__item ">
+                                <a href="https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/SitePages/MentorPortalBackupLatest/index.html" class="em-c-primary-nav__link " target="_blank"> 
+									Technical Mentoring
+								</a>
+                            </li>
+
+                            <li class="em-c-primary-nav__item ">
+                                <a href="#!/events" class="em-c-primary-nav__link " target="_self">
+									Events
+								</a>
+                            </li>
+
+                            <li class="em-c-primary-nav__item ">
+                                <a href="#!/about" class="em-c-primary-nav__link " target="_self">
+									About KTDC
+								</a>
+                            </li>
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div ui-view></div>
+
+</body>
+
+</html>

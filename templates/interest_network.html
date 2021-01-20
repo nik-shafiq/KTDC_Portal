@@ -1,0 +1,79 @@
+<div class="em-l-container">
+
+    <style>
+        .buttong {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #890c58;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 1rem;
+            padding: 10px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .buttong span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .buttong span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .buttong:hover span {
+            padding-right: 25px;
+        }
+
+        .buttong:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+    </style>
+    <div class="em-c-page-header em-c-page-header--med">
+        <br>
+        <h1 class="em-c-page-header__title" style="text-align: center;">Meet <b style="color: #890c58;">{{ cop_name
+                }}</b></h1>
+    </div>
+
+    <ul class="em-c-contact-card-list  em-l-grid em-l-grid--5up">
+        <li class="em-c-contact-card-list__item em-l-grid__item" ng-repeat="item in data">
+            <div class="em-c-card vcard" style="border: 0px; align-items: center;">
+                <div class="em-c-card__body" style=" margin-left: auto;margin-right: auto;">
+                    <img src="https://mysite.na.xom.com/User%20Photos/Profile%20Pictures/{{ item.LAN_Domain }}_{{ item.LAN_ID }}_LThumb.jpg"
+                        style="width: 150px; height: 150px; border-radius: 50%; margin-left: 15px;" />
+                    <div class="em-c-media-block em-c-media-block--small">
+                        <div class="em-c-media-block__body" style=" text-align: center;">
+                            <h2 class="em-c-media-block__headline fn">
+                                {{ item.name }}
+                            </h2>
+                            <p class="em-c-media-block__desc" style="color: #890c58;">
+                                <span class='org'><b>{{ item.department }}</b></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+
+
+    <div class="em-c-page-header ">
+        <p class="em-c-page-header__desc">Need Help? We are here for you!
+            <a href="{{ yammer }}" target="_blank"><button class="buttong" style="vertical-align:middle"><span>Contact
+                        us on Yammer</span></button></a>
+        </p>
+    </div>
+
+</div>

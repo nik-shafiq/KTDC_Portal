@@ -1,0 +1,156 @@
+<div class="em-c-hero em-c-hero--bare"
+    style="background: #0F0E1F url('unity-1.5.0/images/hero_pattern.png');">
+    <div class="em-c-hero__body" style="padding-left: 300px; padding-bottom: 30px;">
+        <h1 class="em-c-hero__title--bold" style="font-weight: bold; ">We’re here to help <i> you </i> help ExxonMobil win</h1>
+        <h1 class="em-c-hero__desc" style="padding-right: -200px;">You work hard to help ExxonMobil compete and win. It's our job in KTDC to help foster the culture of learning. 
+		Whatever issue you're facing in your upskilling journey, we would like to help and connect you to the right people with the right knowledge.
+        </h1>
+    </div>
+</div>
+
+ 
+
+
+<section class="em-c-section ">
+
+<div class="em-l-container">
+        <ul class="em-c-card-list  em-l-grid em-l-grid--4up" style="z-index: 1;">
+            <li class="em-c-card-list__item em-l-grid__item"
+                style="border-radius: 15px; background:white; padding:0px; box-shadow: 1px 1px 5px #888888; margin-right: 50px; max-height: 450px;"
+                ng-repeat="item in rows">
+                <div class="em-c-stacked-block " style="border: none;">
+                    <div class="em-c-stacked-block__header">
+                        <img src="{{ item.banner }}" class="em-c-stacked-block__img"
+                            style="min-height: 180px;border-radius: 15px 15px 0px 0px;" />
+                    </div>
+                    <div class="em-c-stacked-block__body">
+                        <a href="{{ item.link }}" class="em-c-stacked-block__title " target="_blank"
+                            style="text-decoration: none; padding: 20px;">{{ item.Title }}</a>
+                        <p class="em-c-stacked-block__desc" style="padding: 20px;">{{ item.description }}</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="em-c-page-header " style="padding-top: 60px;">
+            <section class="em-c-section em-c-section em-c-section">
+                <header class="em-c-section__header ">
+                    <h2 class="em-c-section__title ">
+                        <img src="unity-1.5.0/images/ktdc_images/KTDC_Mission.png" style="max-width: 100%;">
+                    </h2>
+                </header>
+				<br>
+				<br>
+                <header class="em-c-section__header ">
+                    <h2 class="em-c-section__title ">
+                        <img src="unity-1.5.0/images/ktdc_images/KTDC_Vision.png" style="max-width: 100%;">
+                    </h2>
+                </header>				
+				<br>
+				<br>			
+                <header class="em-c-section__header ">
+                    <h2 class="em-c-section__title ">
+                        <img src="unity-1.5.0/images/ktdc_images/KTDC_Member.png" style="max-width: 100%;">
+                    </h2>
+                </header>					
+				<br>
+				<br>			
+                <header class="em-c-section__header ">
+                    <h2 class="em-c-section__title ">
+                        <img src="unity-1.5.0/images/ktdc_images/KTDC_Approach.png" style="max-width: 100%;">
+                    </h2>
+                </header>	
+				<br>
+				<br>
+                <header class="em-c-section__header ">
+                    <h2 class="em-c-section__title ">
+                        <img src="unity-1.5.0/images/ktdc_images/KTDC_OKR.png" style="max-width: 100%;">
+                    </h2>
+                </header>
+				
+                <!--div class="em-c-section__body" style="color: #595858; padding-left: 40px; padding-top: 80px">
+                    <h3> A recent Gartner research report found that "While the number of skills required for a single
+                        job is increasing by 10% year-over-year, 33% of the skills
+                        needed three years ago are no longer relevant." </h3>
+                    <h3> How can we shift our focus to a more dynamic and responsive approach to skills? </h3>
+                </div-->
+            </section>
+        </div>
+
+</div>
+</section>
+
+<div id="feedback" class="em-u-padding-top-quad em-u-padding-bottom-double bg-violet white"
+    style="background: #e5e5e5;">
+
+    <div class="em-l-container">
+
+        <div class="em-l-grid em-l-grid--2up em-u-padding-top-double em-u-padding-bottom-quad">
+
+            <div class="em-l-grid__item em-u-padding-right-quad">
+                <h1 class="em-u-font-style-regular" style="color: #890c58;">We are not perfect, we are learning. 
+Please share your feedback and tell us how can we serve you better.
+ </h1>
+            </div>
+
+            <div class="em-l-grid__item">
+
+                <form id="feedback" name="feedback" novalidate=""
+                    class="ng-pristine ng-invalid ng-invalid-required ng-valid-minlength"
+                    ng-submit="submit_feedback(dat)" ng-if="show_form">
+                    <fieldset class="em-c-fieldset no-border">
+
+                        <div class="em-c-field em-is-readonly">
+                            <label for="" class="em-c-field__label white">Name</label>
+                            <div class="em-c-field__body">
+                                <input ng-model="dat.name" type="text" placeholder="{{ user }}"
+                                    class="em-c-field__input em-js-datepicker ng-pristine ng-untouched ng-valid ng-not-empty"
+                                    value="" readonly="">
+                                <svg class="em-c-icon em-c-icon--medium em-c-field__icon">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        xlink:href="unity-1.5.0/images/24/em-icons.svg#icon-lock"></use>
+                                </svg>
+                            </div>
+                            <div class="em-c-field__note white">Read only</div>
+                        </div>
+
+                        <div class="em-c-field em-u-margin-top">
+                            <label for="" class="em-c-field__label white">We value your feedback</label>
+                            <div class="em-c-field__body">
+                                <textarea ng-model="dat.feedback" required=""
+                                    class="em-c-textarea ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required ng-valid-minlength"
+                                    id="" placeholder="Tell us what you're thinking!" rows="5"></textarea>
+                            </div>
+
+                            <div class="em-c-field__note white">
+                                Required. 10 characters minimum.
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="em-c-btn-group em-u-text-align-right" style="position: relative;">
+                        <input type="submit" value="Send Feedback" class="em-c-btn em-c-btn--primary"
+                            style="position:absolute;right:0; background-image: linear-gradient(45deg, #3a397b, #890c58); text-align: center; font-family: EMprint;" />
+                    </div>
+
+                </form>
+
+
+                <div class="em-c-alert em-c-alert--success" role="alert" ng-if="feedback_submitted"
+                    style="padding-top: 30 px;">
+                    <svg class="em-c-icon em-c-icon--medium em-c-alert__icon">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xlink:href="unity-1.5.0/images/em-icons.svg#circle-check"></use>
+                    </svg>
+                    <div class="em-c-alert__body">
+                        Thank you for your feedback !
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
