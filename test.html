@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE11">
+    <!-- The above 3 meta tags *must* come first in the head -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js" crossorigin="anonymous"></script>
+    <!-- <script src="unity-1.6.0/js/ng_scripts.js"></script> -->
+    <link href="images/ITLogo.ico" rel="shortcut icon" />
+    <title>test</title>
+</head>
+
+<script>
+    var app = angular.module("cxmy", [])
+
+        .controller('mainController', ["$scope", "$http", function ($scope, $http) {
+            console.log("controller is called !");
+
+            //get data to show
+
+            $http({
+                method: 'GET',
+                url: "https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/_api/Lists/getbytitle('Feedbacks')/items",
+                dataType: 'json',
+                withCredentials: true,
+                credentials: 'include',
+                headers: {
+                    "Accept": "application/json; odata=verbose"
+                }
+            }).then(function (res) {
+                //Success
+                $scope.rows = res.data.d.results;
+                console.log($scope.rows)
+
+            }, function (error) {
+                //Error
+                console.log("error when fetching data from sharepoint list")
+            });
+
+            //post data to sharepoint list
+            function getFormDigestValue() {
+                return $http({
+                    url: "https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/_api/contextinfo",
+                    withCredentials: true,
+                    method: 'POST',
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Access-Control-Allow-Headers': 'Content-Type',
+                        "Content-Type": "application/json;odata=verbose",
+                        "Accept": "application/json; odata=verbose"
+                    },
+                }).then(function (res) {
+                    var digest = res.data.FormDigestValue || res.data.d.GetContextWebInformation.FormDigestValue;
+                    return digest;
+                })
+            }
+
+
+            $scope.submit_comment = function (dat) {
+                // console.log("feedback submitted");
+                // console.log(dat);
+
+                d = {
+                    __metadata: {
+                        type: 'SP.Data.FeedbacksListItem',
+                    }
+                }
+
+                d["name"] = $scope.user
+                d["feedback"] = dat["feedback"]
+                console.log(d);
+
+                getFormDigestValue().then(function (FormDigestValue) {
+                    console.log(FormDigestValue);
+                    return $http({
+                        method: 'POST',
+                        url: "https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/_api/Lists/getbytitle('Feedbacks')/items",
+                        headers: {
+                            accept: 'application/json; odata=verbose',
+                            "content-type": 'application/json; odata=verbose',
+                            "X-RequestDigest": FormDigestValue
+                        },
+                        data: d
+                    }).then(
+                        function onSuccess(response) {
+                            console.log('A feedback has been received')
+                            $scope.feedback_submitted = true;
+                            $scope.show_form = false;
+
+                        },
+                        function onError(error) {
+                            console.error('An error occur while trying to sending feedback')
+                        }
+                    )
+                });
+
+            }
+
+
+        }]);
+</script>
+
+<body ng-app="cxmy" ng-controller="mainController">
+    <form id="feedback" name="feedback" novalidate="" ng-submit="submit_comment(dat)">
+        <fieldset>
+
+            <div>
+                <div>
+                    <textarea ng-model="dat.feedback" required="" id="" placeholder="comment here" rows="5"></textarea>
+                </div>
+
+                <div class="em-c-field__note white">
+                    Required. 10 characters minimum.
+                </div>
+            </div>
+        </fieldset>
+
+        <div style="position: relative;">
+            <input type="submit" value="Send Feedback" class="em-c-btn em-c-btn--primary"
+                style="position:absolute;right:0; background-image: linear-gradient(45deg, #3a397b, #890c58); text-align: center; font-family: EMprint;" />
+        </div>
+
+    </form>
+</body>
+
+</html>

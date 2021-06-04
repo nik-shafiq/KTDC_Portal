@@ -134,10 +134,19 @@ app.controller('cop_controller', ["$scope", "$http", "$stateParams", function ($
 
 app.controller('event_controller', ["$scope", "$http", "$stateParams", function ($scope, $http, $stateParams) {
 
-    // console.log("event_controller has been summoned")
+    var data_array = [];
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+
+    var today = new Date();
+    $scope.m = today.getMonth()
+    $scope.month = monthNames[$scope.m]
+    var data_rows = [];
+
     $http({
         method: 'GET',
-        url: "https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/_api/Lists/getbytitle('Events')/items",
+        url: "https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/_api/Lists/getbytitle('KLGBC_Events')/items?$expand=AttachmentFiles",
         dataType: 'json',
         withCredentials: true,
         headers: {
@@ -147,24 +156,33 @@ app.controller('event_controller', ["$scope", "$http", "$stateParams", function 
         }
     }).then(function (res) {
         rows = res.data.d.results;
-        // date = rows[0].Event_Date;
 
-        function eventdate(date){
-            n = date.substring(8)
-            m = parseInt(n) + 1
-            depan = date.substring(0, 8)
-            modified = depan + m
+        function eventdate(date) {
+            // n = date.substring(8)
+            // m = parseInt(n)
+            // depan = date.substring(0, 8)
+            // modified = depan + m
+            modified = new Date(date).toLocaleDateString();
             return modified
         }
 
-        var data_array = []; 
+        function eventdate2(date) {
+            
+            time = new Date(date).toLocaleTimeString();
+            date = new Date(date).toLocaleDateString();
+
+            date_time = date + " " + time
+            return date_time
+        }
 
         angular.forEach(rows, function (value) {
             var event = []
-            // event.Event_Date = value["Event_Date"].substring(0, 10);
-            eventdate(value["Event_Date"].substring(0, 10));
-            event.Event_Date = modified
+            eventdate(value["EventDate"].substring(0, 10));
+            eventdate2(value["EventDate"]);
+            event.Event_Date = ((value["fAllDayEvent"])?  modified : date_time)
+            // event.Event_Date = modified
             event.Title = value["Title"]
+            event.mon = Math.round(value["mon"])
             event.Description = value["Description"]
             event.Event_Link = value["Event_Link"]
             event.Event_Type = value["Event_Type"]
@@ -172,32 +190,117 @@ app.controller('event_controller', ["$scope", "$http", "$stateParams", function 
             event.OData__x0054_ag2 = value["OData__x0054_ag2"]
             event.OData__x0054_ag3 = value["OData__x0054_ag3"]
             event.Thumbnail = value["Thumbnail"]
-            event.color = value["color"]
+            event.Color = value["Color"]
             event.Description = value["Description"]
+
+            if (value["Attachments"]) {
+                if ("results" in value["AttachmentFiles"]) {
+                    if (value["AttachmentFiles"]["results"].length > 0) {
+                        if ("ServerRelativeUrl" in value["AttachmentFiles"]["results"][0]) {
+                            event.Icon = "https://ishareteam3.na.xom.com" + value["AttachmentFiles"]["results"][0]["ServerRelativeUrl"]
+                        }
+                    }
+                }
+            } else {
+                event.Icon = "https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/ktdc/unity-1.5.0/images/emit_logo.png"
+            }
+
+            var tag1, tag2, tag3, details_button = false
+
+            if (value["OData__x0054_ag1"]) {
+                event.tag1 = true
+            } else {
+                event.tag1 = false
+            }
+            if (value["OData__x0054_ag2"]) {
+                event.tag2 = true
+            } else {
+                event.tag2 = false
+            }
+            if (value["OData__x0054_ag3"]) {
+                event.tag3 = true
+            } else {
+                event.tag3 = false
+            }
+
+            if (value["Event_Link"]) {
+                // value["Event_Link"] = value["Event_URL"]
+                event.details_button = true
+            } else (
+                event.details_button = false
+            )
+
             data_array.push(event)
 
         });
 
-        console.log(data_array)
 
-        $scope.rows = data_array;
 
-        // $scope.data = rows.filter(function(item) {
-        //     return item.state == cop
-        // });
+        angular.forEach(data_array, function (value) {
 
-        // $scope.cop_name = $scope.data[0].Network
-        // console.log($scope.cop_name)
+            if (value["mon"] == $scope.m) {
+                data_rows.push(value)
+            }
+
+            if (value["Description"] != null) {
+                var first = value["Description"].substring(0, 5)
+                if (first == "<div>") {
+                    value["Description"] = value["Description"].replace("<div>", "")
+                    value["Description"] = value["Description"].replace("</div>", "")
+                }
+            }
+            if (!value["Description"]) {
+                value["Description"] = "Come join us in " + value["Title"]
+            }
+
+        })
+        $scope.rows = data_rows;
+        console.log(data_rows)
 
     }, function (error) {
         console.log("error when fetching data from sharepoint list")
     });
 
+    $scope.prev_month = function (arr) {
+        data_rows = []
+        $scope.m = $scope.m - 1
+        $scope.month = monthNames[$scope.m]
+        arr = data_array
+
+        angular.forEach(arr, function (value) {
+            if (value["mon"] == $scope.m) {
+                data_rows.push(value)
+            }
+        });
+        console.log(data_rows)
+        $scope.rows = data_rows;
+    }
+
+    $scope.next_month = function (arr) {
+        data_rows = []
+        $scope.m = $scope.m + 1
+        $scope.month = monthNames[$scope.m]
+        arr = data_array
+
+        angular.forEach(arr, function (value) {
+            if (value["mon"] == $scope.m) {
+                data_rows.push(value)
+            }
+        });
+        console.log(data_rows)
+        $scope.rows = data_rows;
+    }
+
+    $scope.filter_type = function () {
+        console.log($scope.type)
+        // data_rows = []
+        
+    }
+
 }]);
 
 app.controller('resources_controller', ["$scope", "$http", "$stateParams", function ($scope, $http) {
 
-    // console.log("resources_controller has been summoned")
     $http({
         method: 'GET',
         url: "https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/_api/Lists/getbytitle('Resources')/items?$orderby=Priority",
@@ -208,40 +311,40 @@ app.controller('resources_controller', ["$scope", "$http", "$stateParams", funct
             'Access-Control-Allow-Headers': 'Content-Type',
             "Accept": "application/json; odata=verbose"
         }
-    }).then(function (res) {
-        rows = res.data.d.results;
-        $scope.rows = rows
-        // console.log(rows)
+    })
+        .then(function (res) {
+            rows = res.data.d.results;
+            $scope.rows = rows
 
-        var auto_array = [];
-        var data_array = [];
-        var cloud_array = [];
-        var other_array = [];
+            var auto_array = [];
+            var data_array = [];
+            var cloud_array = [];
+            var other_array = [];
 
-        angular.forEach(rows, function (value) {
-            if (value["Training_Type"] == "Automation") {
-                auto_array.push(value)
+            angular.forEach(rows, function (value) {
+                if (value["Training_Type"] == "Automation") {
+                    auto_array.push(value)
 
-            }
-            else if (value["Training_Type"] == "Analytics") {
-                data_array.push(value)
-            }
-            else if (value["Training_Type"] == "Cloud") {
-                cloud_array.push(value)
-            }
-            else {
-                other_array.push(value)
-            }
+                }
+                else if (value["Training_Type"] == "Analytics") {
+                    data_array.push(value)
+                }
+                else if (value["Training_Type"] == "Cloud") {
+                    cloud_array.push(value)
+                }
+                else {
+                    other_array.push(value)
+                }
+            });
+
+            $scope.automation = auto_array
+            $scope.analytics = data_array
+            $scope.cloud = cloud_array
+            $scope.others = other_array
+
+        }, function (error) {
+            console.log("error when fetching data from sharepoint list")
         });
-
-        $scope.automation = auto_array
-        $scope.analytics = data_array
-        $scope.cloud = cloud_array
-        $scope.others = other_array
-
-    }, function (error) {
-        console.log("error when fetching data from sharepoint list")
-    });
 
 }]);
 

@@ -27,12 +27,4 @@ app.config(function ($stateProvider) {
       templateUrl: "templates/about_ktdc.html",
       controller: "about_controller"
     })
-    // .state("/", {
-    //   templateUrl: "templates/home.html",
-    //   controller: "MatrixController"
-    // })
-    // .when("/interest_network/:cop", {
-    //   templateUrl: "templates/interest_network.html",
-    //   controller: "cop_controller"
-    // })
 });

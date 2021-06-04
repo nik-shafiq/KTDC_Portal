@@ -1,0 +1,231 @@
+<div class="em-l-container em-u-margin-top-double">
+
+
+    <div class="em-c-modal em-js-modal-only" ng-if="show_modal">
+        <div class="em-c-modal__window em-js-modal-window">
+            <div class="em-c-modal__header">
+                <h3 class="em-c-modal__title">Thank you for your nomination!</h3>
+            </div>
+            <div class="em-c-modal__body em-c-text-passage em-c-text-passage--small">
+                Dont forget to vote!
+                <div class="em-c-btn-group ">
+                    <button class="em-c-btn em-c-btn--primary">
+                        <span class="em-c-btn__text">
+                            <a href="#!/nominee" style="text-decoration: none; color: white;">
+                                Vote Now
+                            </a>
+                        </span>
+                    </button>
+                    <button class="em-c-btn em-c-btn--secondary">
+                        <span class="em-c-btn__text">
+                            <a href="#!/" style="text-decoration: none;">
+                                Go To Home
+                            </a>
+                        </span>
+                    </button>
+                    <button class="em-c-btn em-c-btn--secondary" ng-click="close_modal()">
+                        <span class="em-c-btn__text">Later</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="em-l em-l--two-column-wide">
+        <div class="em-l__main">
+            <form ng-submit="submit_nomination(dat)">
+
+
+                <fieldset class="em-c-fieldset">
+                    <legend class="em-c-fieldset__legend">Nominate KLGBC Gems for \H1 2021\!</legend>
+
+                    <!-- <div class="em-c-field em-c-field--toggle">
+                        <h4 class="em-c-field__label">Category</h4>
+                        <div class="em-c-field__body">
+                            <div class="em-c-toggle">
+                                <input class="em-c-toggle__input em-u-is-vishidden" type="radio" id="toggle-1" name="category"
+                                    ng-model="dat.category" value="GEMS" checked />
+                                <label class="em-c-toggle__label" for="toggle-1">
+                                    GEMS
+                                </label>
+                                <input class="em-c-toggle__input em-u-is-vishidden" type="radio" id="toggle-3"
+                                    ng-model="dat.category" value="Innovator" name="category" />
+                                <label class="em-c-toggle__label" for="toggle-3">
+                                    Innovator
+                                </label>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+                    <!-- <div class="em-c-field ">
+                        <label for="" class="em-c-field__label">Nomination Term ( based on current date)</label>
+                        <div class="em-c-field__body">
+                            <select class="em-c-select em-c-select" id="" placeholder="Placeholder" ng-model="dat.term">
+                                <optgroup label="">
+                                    <option value="H1 2021">H1 2021</option>
+                                    <option value="H2 2021">H2 2021</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div> -->
+
+                    <!-- nomination term automatically set using current date-->
+
+                    <div class="em-c-field em-c-field--toggle">
+                        <h4 class="em-c-field__label">Expectation of Leaders
+                            <span class="em-c-tooltip em-c-tooltip--icon em-js-tooltip">
+                                <span class="em-c-tooltip__trigger em-js-tooltip-trigger">
+                                    <svg class="em-c-icon em-c-icon--small em-c-tooltip__icon">
+                                        <a href="https://goto/leadingtowin" target="_blank">
+                                            <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                xlink:href="unity-1.5.0/images/em-icons.svg#circle-question-mark-filled">
+                                            </use>
+                                        </a>
+                                    </svg>
+                                </span>
+                            </span>
+                        </h4>
+
+                        <!-- <label class="em-c-input-group em-c-checkbox--container " for="inline-check-1">
+                            <input id="inline-check-1" type="checkbox" name="checkbox-1" value=""
+                                class="em-c-input-group__control">
+                            <span class="em-c-checkbox--checkmark"></span>
+                            <span class="em-c-input-group__text">Option 1</span>
+
+                            <input id="inline-check-1" type="checkbox" name="checkbox-2" value=""
+                                class="em-c-input-group__control">
+                            <span class="em-c-checkbox--checkmark"></span>
+                            <span class="em-c-input-group__text">Option 2</span>
+
+                            <input id="inline-check-1" type="checkbox" name="checkbox-3" value=""
+                                class="em-c-input-group__control">
+                            <span class="em-c-checkbox--checkmark"></span>
+                            <span class="em-c-input-group__text">Option 3</span>
+
+                            <input id="inline-check-1" type="checkbox" name="checkbox-4" value=""
+                                class="em-c-input-group__control">
+                            <span class="em-c-checkbox--checkmark"></span>
+                            <span class="em-c-input-group__text">Option 4</span>
+                        </label> -->
+
+                        <div class="em-c-field__body">
+                            <div class="em-c-toggle">
+                                <input class="em-c-toggle__input em-u-is-vishidden" type="radio" id="toggle-11"
+                                    ng-model="dat.priorities" value="Set Standards" name="priorities" checked />
+                                <label class="em-c-toggle__label" for="toggle-11">
+                                    Set Standards
+                                </label>
+                                <input class="em-c-toggle__input em-u-is-vishidden" type="radio" id="toggle-12"
+                                    ng-model="dat.priorities" value="Create Clarity" name="priorities" />
+                                <label class="em-c-toggle__label" for="toggle-12">
+                                    Create Clarity
+                                </label>
+                                <input class="em-c-toggle__input em-u-is-vishidden" type="radio" id="toggle-13"
+                                    ng-model="dat.priorities" value="Inspire and Motivate" name="priorities" />
+                                <label class="em-c-toggle__label" for="toggle-13">
+                                    Inspire and Motivate
+                                </label>
+                                <input class="em-c-toggle__input em-u-is-vishidden" type="radio" id="toggle-14"
+                                    ng-model="dat.priorities" value="Promote Innovation" name="priorities" />
+                                <label class="em-c-toggle__label" for="toggle-14">
+                                    Promote Innovation
+                                </label>
+                                <input class="em-c-toggle__input em-u-is-vishidden" type="radio" id="toggle-15"
+                                    ng-model="dat.priorities" value="Compete to Win" name="priorities" />
+                                <label class="em-c-toggle__label" for="toggle-15">
+                                    Compete to Win
+                                </label>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="em-c-field em-js-typeahead">
+                        <label for="" class="em-c-field__label">Contributors</label>
+                        <div class="em-c-field__body">
+                            <input type="" id="" class="em-c-input em-js-typeahead"
+                                placeholder="Nominate your KLGBC Gems" ng-change="typeahead_person()"
+                                ng-model="typeAheadPerson" />
+                            <div class="em-c-field__menu em-js-typeahead-menu"
+                                ng-class="{ 'em-is-active': suggest_bool }">
+                                <ul class="em-c-typeahead-list" ng-if="suggestion_person">
+                                    <li ng-if="show_loading">
+                                        <div class="em-c-field em-c-progress-bar em-c-progress-bar--indeterminate">
+                                            <div class="em-c-progress-bar__label">
+                                                <span class="em-u-margin-left-half"></span>
+                                            </div>
+                                            <div class="em-c-progress-bar__bar"> <span
+                                                    class="em-c-progress-bar--indeterminate__value"></span></div>
+                                        </div>
+                                    </li>
+                                    <li class="em-c-typeahead-list__item" ng-repeat="person in suggestion_person"
+                                        ng-click="suggestion_clicked(person)">
+                                        <span class="em-c-typeahead__suggestion">
+                                            {{ person.name }} ({{ person.id }})
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <ul class="em-c-tags em-c-tags--closing">
+                            <li class="em-c-tags__item em-js-tags-item" ng-repeat="person in suggestion_person_list">
+                                <a class="em-c-tags__link em-js-tags-trigger">
+                                    <span class="em-c-tags__text">
+                                        {{ person.name }} {{person.dept}}
+                                    </span>
+                                    <svg class="em-c-icon em-c-icon--small em-c-tags__icon-inside"
+                                        ng-click="remove_person($index)">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                            xlink:href="unity-1.5.0/images/em-icons.svg#x-filled"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="em-c-field ">
+                        <label for="" class="em-c-field__label">Description</label>
+                        <div class="em-c-field__body">
+                            <textarea class="em-c-textarea " id="" placeholder="Describe your nomination" value=""
+                                rows="7" ng-model="dat.description"></textarea>
+                        </div>
+                    </div>
+
+                    <button class="em-c-btn em-c-btn--primary" style="float: right;" type="submit">
+                        <span class="em-c-btn__text">Submit</span>
+                    </button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="em-l__secondary">
+            <legend class="em-c-fieldset__legend">Who are GEMS?</legend>
+            <div class="em-l-container">
+                <figure class="em-c-figure">
+                    <div class="em-c-figure__media">
+                        <img src="unity-1.5.0/images/GEMS Badge.jpg" alt="Alt Text" />
+                    </div>
+                </figure>
+            </div>
+            <blockquote class="em-c-pullquote">
+                <svg class="em-c-icon em-c-icon--large em-c-pullquote__icon">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xlink:href="unity-1.5.0/images/48/em-icons.svg#quote-left">
+                    </use>
+                </svg>
+                <div class="em-c-pullquote__quote">... KLGBC people and the teams who are recognized & appreciated
+                    through their achievements and role model behaviours...</div>
+                <cite class="em-c-pullquote__citation">Kamarudin Mustapa, KLGBC Chief of Site</cite>
+            </blockquote>
+        </div>
+    </div>
+
+
+    <!-- <figure class="em-c-figure">
+        <div class="em-c-figure__media">
+            <img src="unity-1.5.0/images/klgbc_prority.png" alt="Alt Text" class="" />
+        </div>
+    </figure> -->
+</div>

@@ -8,7 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.js" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/@uirouter/angularjs/release/angular-ui-router.min.js" crossorigin="anonymous"></script>
-    <script src="//ishareteam3.na.xom.com///code.angularjs.org/1.6.9/angular-route.js" crossorigin="anonymous"></script>
+    <!-- <script src="//ishareteam3.na.xom.com///code.angularjs.org/1.6.9/angular-route.js" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js" integrity="sha256-pMnh0ZUcC06qaENqfwxWLsWK/AkhiMlIVqdlPXA7BsU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.25/angular-ui-router.min.js" integrity="sha256-PMXh7fGR83hrns0BuGCsQXlo+2FD9R0EBRMYsRcv7FE=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.26/stateEvents.min.js"></script>
@@ -49,13 +49,40 @@
 									Technical Mentoring
 								</a>
                             </li>
-
+                            <li class="em-c-primary-nav__item ">
+                                <a href="#" class="em-c-primary-nav__link  em-c-primary-nav__link--has-children em-js-nav-dropdown-trigger" style="color: white; font-family: EMprint;">
+                                    KLGBC GEMS
+                                    <svg class="em-c-icon em-c-icon--small em-c-primary-nav__icon">
+                                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="unity-1.5.0/images/em-icons.svg#caret-down"></use>
+                                    </svg>
+                                </a>
+                                <div class="em-c-primary-nav__sublist  em-js-nav-dropdown ">
+                                    <ul>
+                                        <li class="em-c-primary-nav__subitem">
+                                            <a target="blank" href="https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/klgbc_gems/index.html#!/" class="em-c-primary-nav__sublink">About KLGBC GEMS</a>
+                                        </li>
+                                        <li class="em-c-primary-nav__subitem">
+                                            <a target="blank" href="https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/klgbc_gems/index.html#!/nominate" class="em-c-primary-nav__sublink">Nominate Now!</a>
+                                        </li>
+                                        <li class="em-c-primary-nav__subitem">
+                                            <a target="blank" href="https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/klgbc_gems/index.html#!/nominee" class="em-c-primary-nav__sublink">All Nominations</a>
+                                        </li>
+                                        <li class="em-c-primary-nav__subitem">
+                                            <a target="blank" href="https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/klgbc_gems/index.html#!/hall_of_fame" class="em-c-primary-nav__sublink">Hall of Fame</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="em-c-primary-nav__item ">
+                                <a href="#!/resources" class="em-c-primary-nav__link " target="_self">
+									Learning
+								</a>
+                            </li>
                             <li class="em-c-primary-nav__item ">
                                 <a href="#!/events" class="em-c-primary-nav__link " target="_self">
 									Events
 								</a>
                             </li>
-
                             <li class="em-c-primary-nav__item ">
                                 <a href="#!/about" class="em-c-primary-nav__link " target="_self">
 									About KTDC
@@ -73,5 +100,6 @@
     <div ui-view></div>
 
 </body>
+<script type="text/javascript" src="unity-1.5.0/js/em-unity-1.5.0.min.js"></script>
 
 </html>

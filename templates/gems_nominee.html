@@ -1,0 +1,119 @@
+<div class="em-c-promo-block" style="background: #0F0E1F url('unity-1.5.0/images/hero_pattern.png')">
+    <div class="em-l-container em-u-margin-top-double">
+        <h2 class="em-c-promo-block__title">KLGBC GEMS Nominations</h2>
+        <p class="em-c-promo-block__desc">
+            Vote for your favourite GEMS to be the Crowd Favourite
+        </p>
+    </div>
+</div>
+
+<div class="em-l-container">
+
+    <ul class="em-c-solid-card-list em-l-grid em-l-grid--3up">
+        <li class="em-c-solid-card-list__item em-l-grid__item" ng-repeat="item in rows">
+            <div class="em-c-solid-card "
+                style="border-radius: 15px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+                <div href="#" class="em-c-solid-card__body"
+                    style="background-color: white; border-radius: 15px 15px 0px 0px">
+                    <!-- <h3 class="em-c-solid-card__title" style="color: #890c58">
+                        {{ item.Title }}
+                    </h3> -->
+                    <p style="color: black" class="em-u-font-style-semibold">
+                        {{ item.Name }}
+                    </p>
+                    <ul class="em-c-tags ">
+                        <!-- <li class="em-c-tags__item em-js-tags-item">
+                            <a href="#" class="em-c-tags__link " style="background-color: #890c58;">
+
+                                {{ item.Category }}
+
+                            </a>
+                        </li> -->
+                        <li class="em-c-tags__item em-js-tags-item">
+                            <a href="#" class="em-c-tags__link ">
+
+                                {{ item.Priorities }}
+
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="em-c-solid-card__footer em-u-padding-top-none">
+                    <p style="color: black;" class="em-u-font-style-regular-italic">
+                        {{ item.Short_Desc }} ...
+                    </p>
+                    <!-- <div class="em-c-btn-bar" style="float: right;">
+                        <ul class="em-c-btn-bar__list ">
+                            <li class="em-c-btn-bar__item">
+                                <button type="button" class="em-c-btn em-u-padding-none" style="border: none;">
+                                    <div class="em-c-btn__inner">
+                                        <span class="em-c-btn__text">{{ item.like_count }}</span>
+                                        <div class="em-c-icon em-c-icon--small em-icon-wrapper em-c-btn__text"><svg
+                                                height="100%" width="100%" viewBox="0 0 16 16">
+                                                <path
+                                                    d="M8 16a.5.5 0 0 1-.277-.084C7.407 15.706 0 10.719 0 6.5a4.5 4.5 0 0 1 8-2.826A4.5 4.5 0 0 1 16 6.5c0 4.219-7.407 9.206-7.723 9.416A.5.5 0 0 1 8 16zM4.5 3A3.5 3.5 0 0 0 1 6.5c0 2.93 4.81 6.876 7 8.394 1.328-.935 7-5.122 7-8.394a3.5 3.5 0 0 0-6.562-1.689.521.521 0 0 1-.877 0A3.49 3.49 0 0 0 4.5 3z"
+                                                    fill="currentColor"></path>
+                                            </svg></div>
+                                    </div>
+                                </button>
+                            </li>
+                        </ul>
+                    </div> -->
+                </div>
+
+                <div class="em-c-toolbar " style="border-radius: 0px 0px 15px 15px">
+                    <div class="em-c-toolbar__item">
+                        <div class="em-c-btn-group ">
+                            <button class="em-c-btn em-c-btn--primary em-c-btn--small" style="pointer-events: none;">
+                                <span class="em-c-btn__text">{{ item.like_counter }} Votes</span>
+                            </button>
+                            <button class="em-c-btn em-c-btn--secondary em-c-btn--small" style="border: none;"
+                                ng-if="loading">
+                                <div class="em-c-loader ">
+                                    <img src="unity-1.5.0/images/icon-spinner.svg" alt="Loading" width="15 px" />
+                                </div>
+                            </button>
+                            <button class="em-c-btn em-c-btn--secondary em-c-btn--small"
+                                ng-click="like_clicked(item.ID, item.liker_name)" ng-if="item.indicator_empty">
+                                <svg class="em-c-icon em-c-icon--small em-c-btn__icon "
+                                    data-em-icon-path="unity-1.5.0/images/em-icons.svg">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        xlink:href="unity-1.5.0/images/em-icons.svg#heart-line"></use>
+                                </svg>
+                            </button>
+                            <button class="em-c-btn em-c-btn--secondary em-c-btn--small" ng-if="item.indicator_filled"
+                                style="pointer-events: none;">
+                                <svg class="em-c-icon em-c-icon--small em-c-btn__icon "
+                                    data-em-icon-path="unity-1.5.0/images/em-icons.svg">
+                                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                                        xlink:href="unity-1.5.0/images/em-icons.svg#heart-fill"></use>
+                                </svg>
+                            </button>
+                            <button class="em-c-btn em-c-btn--secondary em-c-btn--small" ng-click="read_more(item.ID)">
+                                <span class="em-c-btn__text">Read More</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div class="em-c-modal em-js-modal-only" ng-if="read_modal">
+        <div class="em-c-modal__window em-js-modal-window" style="border-radius: 15px 15px 15px 15px">
+            <div class="em-c-modal__header">
+                <h6 class="em-c-modal__title">{{ modal_name }}</h6>
+                <button class="em-c-btn em-c-btn--bare em-c-modal__close-btn em-js-modal-close-trigger" ng-click="close_modal()">
+                    <span class="em-c-btn__text">Close</span>
+                </button>
+            </div>
+            <div class="em-c-modal__body em-c-text-passage em-c-text-passage--small">
+                {{ modal_priorities }}
+            </div>
+            <div class="em-c-modal__footer em-c-text-passage em-c-text-passage--small">
+                {{ modal_desc }}
+            </div>
+        </div>
+    </div>
+
+</div>

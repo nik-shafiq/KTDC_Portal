@@ -1,46 +1,104 @@
 <div class="em-l-container">
-    
-<div class="em-c-page-header " style="margin-bottom: 30px;">
-    <!-- h1 class="em-c-page-header__title">Let's Stay Connected !</h1 -->
-	<h1 class="em-c-hero__title--bold" style="color: #890c58; font-weight: bold;"><br>Let's stay connected!</h1>
-	<p class="em-c-page-header__desc">Stay tuned with upcoming trainings, conferences, and interest network <br>get-together.</p>
-    <!-- <p class="em-c-page-header__desc">This is a summary block of text that is used to introduce the page, provide additional context or instructions, etc.</p> -->
-  </div>
+
+    <div class="em-c-page-header " style="margin-bottom: 30px;">
+        <!-- h1 class="em-c-page-header__title">Let's Stay Connected !</h1 -->
+        <h1 class="em-c-hero__title--bold" style="color: #890c58; font-weight: bold;"><br>Let's stay connected!</h1>
+        <p class="em-c-page-header__desc">Stay tuned with upcoming trainings, conferences, and interest network
+            <br>get-together.
+        </p>
+        <!-- <p class="em-c-page-header__desc">This is a summary block of text that is used to introduce the page, provide additional context or instructions, etc.</p> -->
+    </div>
+
+    <div class="em-c-btn-group em-c-btn-group--responsive em-u-padding-bottom-double">
+
+        <div class="em-c-field">
+            <div class="em-c-field__body">
+                <select class="em-c-select em-c-select em-u-margin-right" ng-change="filter_type()" ng-model="type">
+                    <optgroup>
+                        <option value="all">All</option>
+                        <option value="conference">Conference</option>
+                        <option value="training">Training</option>
+                        <option value="bk">Business Knowledge</option>
+                        <option value="cop">COP</option>
+                        <option value="klgbc">KLGBC</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+        <!-- <div class="em-c-field">
+            <div class="em-c-field__body">
+                <select class="em-c-select em-c-select em-u-margin-right" ng-change="filter_type()" ng-model="type" ng-options="type_option as type_option.name for type_option in type_options">
+                </select>
+            </div>
+        </div> -->
+
+        <button class="em-c-btn--small " ng-click="prev_month()">
+            <div class="em-c-btn__inner">
+                <svg class="em-c-icon em-c-icon--small em-c-btn__icon "
+                    data-em-icon-path="unity-1.5.0/images/em-icons.svg">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xlink:href="unity-1.5.0/images/em-icons.svg#chevron-left"></use>
+                </svg>
+            </div>
+        </button>
+        <button class="em-c-btn--small " ng-click="next_month()">
+            <div class="em-c-btn__inner">
+                <svg class="em-c-icon em-c-icon--small em-c-btn__icon "
+                    data-em-icon-path="unity-1.5.0/images/em-icons.svg">
+                    <use xmlns:xlink="http://www.w3.org/1999/xlink"
+                        xlink:href="unity-1.5.0/images/em-icons.svg#chevron-right"></use>
+                </svg>
+            </div>
+        </button>
+        <button class="em-c-btn em-c-btn--small" style="border: none;">
+            <span class="em-c-btn__text" style="color: black;">{{ month }}</span>
+        </button>
+
+        <a target="_blank"
+            href="https://ishareteam3.na.xom.com/sites/EMITKL/Kejora/_layouts/15/start.aspx#/Lists/KLGBC_Events/calendar.aspx">
+            <button class="em-c-btn em-c-btn--small" style="border: none; background-color: #890c58;">
+                <span class="em-c-btn__text" style="color: white;">Add Event</span>
+            </button>
+        </a>
+    </div>
+
+
+
     <ul class="em-c-card-list  em-l-grid em-l-grid--3up" id="gridlist">
         <li class="em-c-card-list__item em-l-grid__item" ng-repeat="item in rows">
-            <div class="em-c-card em-c-card--capped" style="border-top-color:{{ item.color }}"><span class="em-c-card__flag"
-                    style="background:{{ item.color }}">{{ item.Event_Type }}</span>
+            <div class="em-c-card em-c-card--capped" style="border-top-color:{{ item.Color }}"><span
+                    class="em-c-card__flag" style="background:{{ item.Color }}">{{ item.Event_Type }}</span>
                 <div class="em-c-card__body">
                     <div class="em-c-media-block em-c-media-block--small">
-                        <div class="em-c-media-block__media"><img
-                                src="event_thumbnail/{{item.Thumbnail}}"
-                                alt="Alt Text" class="em-c-media-block__img"></div>
+                        <div class="em-c-media-block__media"><img src="{{item.Icon}}" class="em-c-media-block__img">
+                        </div>
                         <div class="em-c-media-block__body">
-                            <h2 class="em-c-media-block__headline " onclick="showDetails(68);"><a
-                                    href="#viewdetails">{{ item.Title }}</a></h2>
+                            <h2 class="em-c-media-block__headline " onclick="showDetails(68);"><a href="#viewdetails">{{
+                                    item.Title }}</a></h2>
                             <p class="em-c-media-block__desc">{{ item.Description }}</p>
                             <p class="em-c-media-block__desc"><b>Event Date: </b>{{ item.Event_Date }}</p>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div>
                     <ul class="em-c-tags ">
-                        <li class="em-c-tags__item em-js-tags-item">
+                        <li class="em-c-tags__item em-js-tags-item" ng-if=item.tag1>
                             <a href="#" class="em-c-tags__link ">
 
                                 {{ item.OData__x0054_ag1 }}
 
                             </a>
                         </li>
-                        <li class="em-c-tags__item em-js-tags-item">
+                        <li class="em-c-tags__item em-js-tags-item" ng-if=item.tag2>
                             <a href="#" class="em-c-tags__link ">
 
                                 {{ item.OData__x0054_ag2 }}
 
                             </a>
                         </li>
-                        <li class="em-c-tags__item em-js-tags-item">
+                        <li class="em-c-tags__item em-js-tags-item" ng-if=item.tag3>
                             <a href="#" class="em-c-tags__link ">
 
                                 {{ item.OData__x0054_ag3 }}
@@ -49,9 +107,10 @@
                         </li>
                     </ul>
                 </div>
-                <div class="em-c-card__footer">
-                    <div class="em-c-card__actions">
-                        <a href="{{ item.Event_Link }}" class="em-c-btn em-c-btn--small em-c-btn--inverted em-js-modal-trigger" target="_blank">
+                <div class="em-c-card__footer" ng-if=item.details_button>
+                    <div class="em-c-card__actions em-u-padding-none em-u-margin-top-none">
+                        <a href="{{ item.Event_Link }}"
+                            class="em-c-btn em-c-btn--small em-c-btn--inverted em-js-modal-trigger" target="_blank">
                             <span class="em-c-btn__text">View Details</span>
                         </a>
                     </div>
